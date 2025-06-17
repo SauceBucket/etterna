@@ -1,5 +1,5 @@
 # ROOT CMakeLists.txt
-cmake_minimum_required(VERSION 3.15.0)
+cmake_minimum_required(VERSION 3.19.0)
 
 # Policies
 cmake_policy(SET CMP0076 NEW)  # Tell cmake to convert target_sources input from relative path to absolute path
@@ -87,6 +87,8 @@ if(WIN32)
     target_link_libraries(Etterna PRIVATE ADVAPI32.LIB)
     target_link_libraries(Etterna PRIVATE USER32.LIB)
 endif()
+
+add_compile_definitions(STBI_FAILURE_USERMSG)
 
 # Load external libraries
 add_subdirectory(extern EXCLUDE_FROM_ALL) # EXCLUDE_FROM_ALL to exclude from cpack binary
